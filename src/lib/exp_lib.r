@@ -9,6 +9,11 @@ require("data.table")
 require("mlflow")
 
 #------------------------------------------------------------------------------
+#variables globales
+
+EXP_MLFLOW_INICIADO  <- FALSE
+
+#------------------------------------------------------------------------------
 #Estoy al inicio del log, luego de grabar los titulos
 #inicializo el ambiente de mlflow
 
@@ -562,6 +567,14 @@ exp_log  <- function( reg, arch=NA, folder="./", ext=".txt", verbose=TRUE )
   archivo  <- arch
   if( is.na(arch) )  archivo  <- paste0(  folder, substitute( reg), ext )
 
+  #Inicio mlflow de ser necesario
+  if( ! EXP_MLFLOW_INICIADO )
+  {
+    exp_mlflow_iniciar( )
+    EXP_MLFLOW_INICIADO  <<- TRUE
+  }
+
+
   if( !file.exists( archivo ) )  #Escribo los titulos
   {
     linea  <- paste0( "experimento\t",
@@ -569,8 +582,6 @@ exp_log  <- function( reg, arch=NA, folder="./", ext=".txt", verbose=TRUE )
                       paste( list.names(reg), collapse="\t" ), "\n" )
 
     cat( linea, file=archivo )
-
-    exp_mlflow_iniciar( )
   }
 
   linea  <- paste0( EXP$experiment$name, "\t",
@@ -583,7 +594,7 @@ exp_log  <- function( reg, arch=NA, folder="./", ext=".txt", verbose=TRUE )
 
   #grabo mlflow
 
- #inicio el  run
+  #inicio el  run
   res  <- mlflow_start_run( nested= TRUE )
 
   #agrego tags al  run
@@ -613,9 +624,10 @@ exp_log  <- function( reg, arch=NA, folder="./", ext=".txt", verbose=TRUE )
 
 
 #source( "~/labo/src/lib/exp_lib.r" ) 
+#exp_start( "FE9121" )  #Tomas Mac
 #exp_start( "FE8120" )
 #exp_start( "TS8210" )
-#exp_start( "HT8310" )
+#exp_restart( "HT8310" )
 
 #exp_start( "FE8120" )
 #exp_start( "TS9210" )
