@@ -248,7 +248,7 @@ AgregarVariables  <- function( dataset )
   dataset[ , mvr_mpagominimo         := mv_mpagominimo  / mv_mlimitecompra ]
 
   #Aqui debe usted agregar sus propias nuevas variables
-  
+  #TEAM ACV
   # polinómica
   dataset[ , varnueva_36 := mcuentas_saldo * 0.11 + cliente_edad * 0.04 + Master_fechaalta * 0.04 + mactivos_margen * 0.09 +
              mrentabilidad_annual * 0.06 + mpayroll * 0.15 + ctrx_quarter * 0.63 + cpayroll_trx * 0.23 + mpasivos_margen * 0.19+
@@ -256,9 +256,21 @@ AgregarVariables  <- function( dataset )
   dataset[ , varnueva_11 := ctrx_quarter * mcaja_ahorro ]
   dataset[ , varnueva_27 := mtarjeta_visa_consumo * mcaja_ahorro ]
   dataset[ , varnueva_13 := ctrx_quarter * mtarjeta_visa_consumo ]
-  dataset[ , varnueva_77         := cpayroll_trx   / mcomisiones_mantenimiento  ]
-  dataset[ , varnueva_58         := mactivos_margen  / mprestamos_personales  ]
+  dataset[ , varnueva_77 := cpayroll_trx   / mcomisiones_mantenimiento  ]
+  dataset[ , varnueva_58 := mactivos_margen  / mprestamos_personales  ]
   dataset[ , varnueva_02 := cliente_edad * mcuentas_saldo ]
+  dataset[ , varnueva_58 := mactivos_margen  / mprestamos_personales  ]
+  
+  
+  ### Disclaimer a partir de acá es un HURTO literal a los compañeros DRAGO y LARRETA 
+  ### que muy amablemente compartieron su código en GIT, los invito a HURTAR con toda libertad
+  ### mi código.
+  
+  #LIQUIDEZ DEL CLIENTE (disp. inmediata de efectivo por parte de el cliente) (BRAIAN)##
+  dataset[ , liquid_cc := rowSums( cbind( mcuenta_corriente_adicional,  mcuenta_corriente) , na.rm=TRUE ) ]
+  dataset[ , liquid_ca := rowSums( cbind( mcaja_ahorro_adicional,mcaja_ahorro ) , na.rm=TRUE ) ]
+  dataset[ , liquid_tot := rowSums( cbind( liquid_cc,  liquid_ca) , na.rm=TRUE ) ]
+  dataset[ , liquid_tot2 := rowSums( cbind( liquid_tot/mcuentas_saldo) , na.rm=TRUE ) ]
   
   
 
