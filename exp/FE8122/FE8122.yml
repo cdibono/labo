@@ -1,9 +1,9 @@
 #solo agrego  lag1 y delta1  de las variables originales
 
 googlecloud:
-  RAM:   512
-  vCPU:    16
-  disk:  1024
+  RAM:   256
+  vCPU:    8
+  disk:  512
 
 
 experiment:
