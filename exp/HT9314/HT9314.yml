@@ -1,9 +1,9 @@
 #Hyperparameter Tuning
 
 googlecloud:
-  RAM:   128
+  RAM:   256
   vCPU:    8
-  disk:  300
+  disk:  512
 
 
 experiment:
