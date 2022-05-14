@@ -17,7 +17,11 @@ require("Rcpp")
 require("rlist")
 require("yaml")
 
+devtools::install_github("moodymudskipper/cutr")
+library(cutr)
+
 require("lightgbm")
+
 
 source( "~/labo/src/lib/exp_lib.r" )
 
