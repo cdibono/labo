@@ -31,7 +31,7 @@ param:
       desde:  202007
       hasta:  202010
     excluir: [ ]
-    undersampling: [ {clase: "CONTINUA", prob: 0.1 } ]
+    undersampling: [ {clase: "CONTINUA", prob: 0.4 } ]
 
   #donde valido
   validate:
