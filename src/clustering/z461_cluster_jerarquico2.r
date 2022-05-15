@@ -59,8 +59,8 @@ hclust.rf  <- hclust( as.dist ( 1.0 - modelo$proximity),  #distancia = 1.0 - pro
 
 #primero, creo la carpeta donde van los resultados
 dir.create( "./exp/", showWarnings= FALSE )
-dir.create( "./exp/ST4610", showWarnings= FALSE )
-setwd( "~/buckets/b1/exp/ST4610" )
+dir.create( "./exp/ST4611", showWarnings= FALSE )
+setwd( "~/buckets/b1/exp/ST4611" )
 
 
 #imprimo un pdf con la forma del cluster jerarquico
