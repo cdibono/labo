@@ -7,14 +7,15 @@ googlecloud:
 
 
 experiment:
-  script: "src/completo/z991_ZZ_lightgbm.r"
+  script: "src/completo/z999_ZZ_lightgbm_semillerio.r"
   restart: TRUE
   name: "exp"
   requires:   [ "HT8312" ]
 
 param:
-  semillerio:  50     #nuevo parámetro, cantidad de semillas que se le cambia al lightgbm y se ensamblan
-  modelos_qty:  5
+  semillerio:  20     #nuevo parámetro, cantidad de semillas que se le cambia al lightgbm y se ensamblan
+                      #cuanto mas grande, mejor ganancia; pero demora mucho mas en correr
+  modelos_qty:  3
   clase_train_POS:    [ "BAJA+2", "BAJA+1" ]
   clase_test_POS:     [ "BAJA+2" ]
   KA_start:  11000
@@ -33,6 +34,7 @@ param:
       FMimportancia:  "FM_importance_"
       tb_predicciones: "tb_predicciones.txt"
       prefijo_pred:  "futuro_prediccion_"
+      prefijo_pred_semillerio: "futuro_prediccion_semillerio_"
       tb_submits:  "tb_submits.txt"
 
   const:
@@ -48,4 +50,3 @@ environment:
   repo_dir: "~/labo/"
   exp_dir:  "~/buckets/b1/exp/"
   catalog:  "catalogo.txt"
-
